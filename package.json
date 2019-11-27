@@ -1,0 +1,55 @@
+{
+  "name": "fastify-debug-headers",
+  "version": "0.4.0",
+  "description": "Fastify plugin to add response debug headers.",
+  "homepage": "https://sw.cowtech.it/fastify-debug-headers",
+  "repository": "github:ShogunPanda/fastify-debug-headers",
+  "keywords": [
+    "fastify",
+    "fastify-plugin",
+    "debug"
+  ],
+  "bugs": {
+    "url": "https://github.com/ShogunPanda/fastify-debug-headers/issues"
+  },
+  "author": "Shogun <shogun@cowtech.it>",
+  "license": "ISC",
+  "files": [
+    "lib",
+    "types",
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "main": "lib/index.js",
+  "typings": "types/index.d.ts",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "lint": "tslint --project tsconfig.test.json -t stylish src/*.ts test/*.ts",
+    "test": "jest test --coverage --coverageReporters=html --coverageReporters=text",
+    "ci": "yarn lint && jest --coverage --coverageThreshold='{\"global\":{\"branches\":90,\"functions\":90,\"lines\":90,\"statements\":90}}' --ci --coverageReporters=json",
+    "prebuild": "rm -rf lib/* types/* && yarn lint",
+    "build": "tsc -p .",
+    "prepublishOnly": "yarn ci",
+    "postpublish": "git push origin && git push origin -f --tags"
+  },
+  "dependencies": {
+    "fastify-plugin": "^1.6.0"
+  },
+  "devDependencies": {
+    "@cowtech/tslint-config": "^5.13.0",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.8",
+    "fastify": "^2.10.0",
+    "jest": "^24.9.0",
+    "jest-additional-expectations": "^0.4.3",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "watchman": false
+  }
+}
