@@ -26,7 +26,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "lint": "tslint --project tsconfig.test.json -t stylish src/*.ts test/*.ts",
-    "test": "jest test --coverage --coverageReporters=html --coverageReporters=text",
+    "test": "jest test --verbose --coverage --coverageReporters=html --coverageReporters=text",
     "ci": "yarn lint && jest --coverage --coverageThreshold='{\"global\":{\"branches\":90,\"functions\":90,\"lines\":90,\"statements\":90}}' --ci --coverageReporters=json",
     "prebuild": "rm -rf lib/* types/* && yarn lint",
     "build": "tsc -p .",
