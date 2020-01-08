@@ -9,7 +9,7 @@ interface DecoratedIncomingMessage extends IncomingMessage {
   [kStartTime]?: [number, number]
 }
 
-export default fastifyPlugin(
+export const plugin = fastifyPlugin(
   function<S = Server, I = IncomingMessage, R = ServerResponse>(
     instance: FastifyInstance,
     options: RegisterOptions<S, I, R>,
@@ -51,3 +51,6 @@ export default fastifyPlugin(
   },
   { name: 'fastify-debug-headers' }
 )
+
+module.exports = plugin
+Object.assign(module.exports, exports)

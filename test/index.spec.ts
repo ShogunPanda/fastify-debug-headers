@@ -2,7 +2,7 @@ import fastify, { FastifyInstance, RegisterOptions } from 'fastify'
 import { IncomingMessage, Server, ServerResponse } from 'http'
 import 'jest-additional-expectations'
 import { hostname } from 'os'
-import fastifyDebugHeaders from '../src'
+import { plugin as fastifyDebugHeaders } from '../src'
 
 let server: FastifyInstance | null
 const servedBy = hostname()
