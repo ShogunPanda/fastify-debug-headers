@@ -1,3 +1,8 @@
+### 2020-01-08 / 0.3.0
+
+- feat: Allow CommonJS default import.
+- chore: Change Typescript settings.
+
 ### 2019-12-19 / 0.2.1
 
 - chore: Build module.
