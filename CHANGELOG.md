@@ -1,3 +1,7 @@
+### 2020-03-08 / 0.4.0
+
+- chore: Updated dependencies.
+
 ### 2020-01-08 / 0.3.0
 
 - feat: Allow CommonJS default import.
