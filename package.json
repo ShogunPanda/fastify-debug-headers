@@ -40,7 +40,7 @@
     "@cowtech/tslint-config": "^5.13.0",
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.8",
-    "fastify": "^2.10.0",
+    "fastify": "^2.12.1",
     "jest": "^24.9.0",
     "jest-additional-expectations": "^0.4.3",
     "prettier": "^1.19.1",
