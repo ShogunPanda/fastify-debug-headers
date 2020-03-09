@@ -1,10 +1,9 @@
 import fastify, { FastifyInstance, RegisterOptions } from 'fastify'
 import { IncomingMessage, Server, ServerResponse } from 'http'
 import { hostname } from 'os'
-import { plugin as fastifyDebugHeaders } from '../src'
 // @ts-ignore
-
-const t = require('tap')
+import t from 'tap'
+import fastifyDebugHeaders from '../src'
 
 let server: FastifyInstance | null
 const servedBy = hostname()
