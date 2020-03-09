@@ -1,3 +1,7 @@
+### 2020-03-09 / 0.7.0
+
+- fix: Fix types.
+
 ### 2020-03-09 / 0.6.0
 
 - fix: Make plugin export explicit.
