@@ -1,2 +1,12 @@
-import { FastifyInstance, RegisterOptions } from 'fastify';
-export declare const plugin: (instance: FastifyInstance<unknown, unknown, unknown>, options: RegisterOptions<unknown, unknown, unknown>, callback: (err?: import("fastify").FastifyError | undefined) => void) => void;
+/// <reference types="node" />
+import { Plugin } from 'fastify';
+import { IncomingMessage, Server as HttpServer, ServerResponse } from 'http';
+import { Http2Server, Http2ServerResponse } from 'http2';
+import { Server as HttpsServer } from 'https';
+export interface Options {
+    servedBy?: boolean;
+    responseTime?: boolean;
+    requestId?: boolean;
+    prefix?: string;
+}
+export declare const plugin: Plugin<HttpServer | HttpsServer | Http2Server, IncomingMessage, ServerResponse | Http2ServerResponse, Options>;
