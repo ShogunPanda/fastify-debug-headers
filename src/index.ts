@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest, Plugin, RegisterOptions } from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
 import { IncomingMessage, Server as HttpServer, ServerResponse } from 'http'
-import { Http2Server, Http2ServerResponse } from 'http2'
+import { Http2Server, Http2ServerRequest, Http2ServerResponse } from 'http2'
 import { Server as HttpsServer } from 'https'
 import { hostname } from 'os'
 
@@ -11,7 +11,11 @@ type DecoratedIncomingMessage<I> = I & {
   [kStartTime]?: bigint
 }
 
-export interface Options {
+export interface Options<
+  S extends HttpServer | HttpsServer | Http2Server = HttpServer,
+  I extends IncomingMessage | Http2ServerRequest = IncomingMessage,
+  R extends ServerResponse | Http2ServerResponse = ServerResponse
+> extends RegisterOptions<S, I, R> {
   servedBy?: boolean
   responseTime?: boolean
   requestId?: boolean
@@ -19,9 +23,9 @@ export interface Options {
 }
 
 function createPlugin<
-  S = HttpServer | HttpsServer | Http2Server,
-  I = IncomingMessage,
-  R = ServerResponse | Http2ServerResponse
+  S extends HttpServer | HttpsServer | Http2Server = HttpServer,
+  I extends IncomingMessage | Http2ServerRequest = IncomingMessage,
+  R extends ServerResponse | Http2ServerResponse = ServerResponse
 >(): Plugin<S, I, R, Options> {
   return fastifyPlugin(
     function(instance: FastifyInstance<S, I, R>, options: RegisterOptions<S, I, R>, done: () => void): void {
@@ -62,12 +66,7 @@ function createPlugin<
   )
 }
 
-export const plugin: Plugin<
-  HttpServer | HttpsServer | Http2Server,
-  IncomingMessage,
-  ServerResponse | Http2ServerResponse,
-  Options
-> = createPlugin()
+export const plugin = createPlugin()
 
 module.exports = plugin
 Object.assign(module.exports, exports)
