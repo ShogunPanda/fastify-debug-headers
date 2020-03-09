@@ -1,3 +1,7 @@
+### 2020-03-09 / 0.5.0
+
+- feat: Improve types, only support Node LTS, replaced jest with tap.
+
 ### 2020-03-08 / 0.4.0
 
 - chore: Updated dependencies.
