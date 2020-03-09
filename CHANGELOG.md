@@ -1,3 +1,7 @@
+### 2020-03-09 / 0.6.0
+
+- fix: Make plugin export explicit.
+
 ### 2020-03-09 / 0.5.0
 
 - feat: Improve types, only support Node LTS, replaced jest with tap.
