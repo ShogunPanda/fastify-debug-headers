@@ -26,30 +26,26 @@
   "types": "types/index.d.ts",
   "scripts": {
     "lint": "tslint --project tsconfig.test.json -t stylish src/*.ts test/*.ts",
-    "test": "jest test --verbose --coverage --coverageReporters=html --coverageReporters=text",
-    "ci": "yarn lint && jest --coverage --coverageThreshold='{\"global\":{\"branches\":90,\"functions\":90,\"lines\":90,\"statements\":90}}' --ci --coverageReporters=json",
+    "test": "tap --reporter=spec --coverage-report=html --coverage-report=text --no-browser test/*.test.ts",
+    "ci": "yarn lint && tap --no-color --reporter=spec --coverage-report=json --coverage-report=text --branches 90 --functions 90 --lines 90 --statements 90 test/*.test.ts",
     "prebuild": "rm -rf lib/* types/* && yarn lint",
     "build": "tsc -p .",
     "prepublishOnly": "yarn ci",
     "postpublish": "git push origin && git push origin -f --tags"
   },
   "dependencies": {
-    "fastify-plugin": "^1.6.0"
+    "fastify-plugin": "^1.6.1"
   },
   "devDependencies": {
     "@cowtech/tslint-config": "^5.13.0",
-    "@types/jest": "^24.0.23",
-    "@types/node": "^12.12.8",
+    "@types/node": "^13.9.0",
     "fastify": "^2.12.1",
-    "jest": "^24.9.0",
-    "jest-additional-expectations": "^0.4.3",
     "prettier": "^1.19.1",
-    "ts-jest": "^24.1.0",
+    "tap": "^14.10.6",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.2"
+    "typescript": "^3.8.3"
   },
-  "jest": {
-    "preset": "ts-jest",
-    "watchman": false
+  "engines": {
+    "node": ">=12.15.0"
   }
 }
