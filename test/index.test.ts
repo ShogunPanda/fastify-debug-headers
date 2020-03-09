@@ -36,6 +36,7 @@ t.test('Plugin', (t: any) => {
 
   t.test('should correctly return all headers by default', async (t: any) => {
     await buildServer()
+
     const response = await server!.inject({ method: 'GET', url: '/main' })
 
     t.equal(response.statusCode, 200)
