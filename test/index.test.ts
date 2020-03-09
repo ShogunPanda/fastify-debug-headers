@@ -31,7 +31,7 @@ async function buildServer(
   return server
 }
 
-t.test('Plugin', async (t: any) => {
+t.test('Plugin', (t: any) => {
   t.afterEach(() => server!.close())
 
   t.test('should correctly return all headers by default', async (t: any) => {
