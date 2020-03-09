@@ -1,3 +1,7 @@
+### 2020-03-09 / 0.8.0
+
+- fix: Fix default export.
+
 ### 2020-03-09 / 0.7.0
 
 - fix: Fix types.
