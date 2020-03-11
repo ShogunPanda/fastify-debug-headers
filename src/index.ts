@@ -65,7 +65,7 @@ const plugin = fastifyPlugin(
           if (responseTime) {
             const duration =
               process.hrtime.bigint() - (request.req as DecoratedIncomingMessage<IncomingMessage>)[kStartTime]!
-            reply.header(`X-${prefix}-Response-Time`, `${(Number(duration) * 1e6).toFixed(6)} ms`)
+            reply.header(`X-${prefix}-Response-Time`, `${(Number(duration) / 1e6).toFixed(6)} ms`)
           }
         }
       )
