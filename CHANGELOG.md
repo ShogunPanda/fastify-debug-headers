@@ -1,3 +1,9 @@
+### 2020-03-11 / 0.9.0
+
+- fix: Fixed wrong calculation.
+- chore: Style fix.
+- chore: Improved test.
+
 ### 2020-03-09 / 0.8.0
 
 - fix: Fix default export.
