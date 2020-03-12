@@ -22,13 +22,11 @@ export interface Options<
   prefix?: string
 }
 
-export interface Plugin<
+export type Plugin<
   S extends HttpServer | HttpsServer | Http2Server = HttpServer,
   I extends IncomingMessage | Http2ServerRequest = IncomingMessage,
   R extends ServerResponse | Http2ServerResponse = ServerResponse
-> {
-  (fastify: FastifyInstance<S, I, R>, options: Options<S, I, R>): void
-}
+> = (fastify: FastifyInstance<S, I, R>, options: Options<S, I, R>) => void
 
 const plugin = fastifyPlugin(
   function(

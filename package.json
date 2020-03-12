@@ -25,9 +25,10 @@
   "typings": "types/index.d.ts",
   "types": "types/index.d.ts",
   "scripts": {
-    "lint": "tslint --project tsconfig.test.json -t stylish src/*.ts test/*.ts",
+    "lint": "eslint src/*.ts test/*.ts",
     "test": "tap --reporter=spec --coverage-report=html --coverage-report=text --no-browser test/*.test.ts",
-    "ci": "yarn lint && tap --no-color --reporter=spec --coverage-report=json --coverage-report=text --branches 90 --functions 90 --lines 90 --statements 90 test/*.test.ts",
+    "test:ci": "tap --no-color --reporter=spec --coverage-report=json --coverage-report=text --branches 90 --functions 90 --lines 90 --statements 90 test/*.test.ts",
+    "ci": "yarn lint && yarn test:ci",
     "prebuild": "rm -rf lib/* types/* && yarn lint",
     "build": "tsc -p .",
     "prepublishOnly": "yarn ci",
@@ -37,12 +38,11 @@
     "fastify-plugin": "^1.6.1"
   },
   "devDependencies": {
-    "@cowtech/tslint-config": "^5.13.0",
+    "@cowtech/eslint-config": "^6.8.5",
     "@types/node": "^13.9.0",
     "fastify": "^2.12.1",
     "prettier": "^1.19.1",
     "tap": "^14.10.6",
-    "tslint": "^5.20.1",
     "typescript": "^3.8.3"
   },
   "engines": {
