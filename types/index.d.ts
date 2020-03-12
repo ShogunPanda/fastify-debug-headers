@@ -9,8 +9,6 @@ export interface Options<S extends HttpServer | HttpsServer | Http2Server = Http
     requestId?: boolean;
     prefix?: string;
 }
-export interface Plugin<S extends HttpServer | HttpsServer | Http2Server = HttpServer, I extends IncomingMessage | Http2ServerRequest = IncomingMessage, R extends ServerResponse | Http2ServerResponse = ServerResponse> {
-    (fastify: FastifyInstance<S, I, R>, options: Options<S, I, R>): void;
-}
+export declare type Plugin<S extends HttpServer | HttpsServer | Http2Server = HttpServer, I extends IncomingMessage | Http2ServerRequest = IncomingMessage, R extends ServerResponse | Http2ServerResponse = ServerResponse> = (fastify: FastifyInstance<S, I, R>, options: Options<S, I, R>) => void;
 declare const _default: Plugin<HttpServer, IncomingMessage, ServerResponse>;
 export default _default;
