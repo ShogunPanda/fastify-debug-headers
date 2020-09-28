@@ -1,3 +1,9 @@
+### 2020-09-28 / 1.0.0
+
+- feat: Update to fastify 3.x.x.
+- chore: Updated CI configuration and switched to ESLint.
+- chore: Removed useless files.
+
 ### 2020-03-11 / 0.9.0
 
 - fix: Fixed wrong calculation.
