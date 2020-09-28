@@ -1,16 +1,16 @@
-import fastify, { FastifyInstance, RegisterOptions } from 'fastify'
-import { IncomingMessage, Server, ServerResponse } from 'http'
+/* eslint-disable @typescript-eslint/no-floating-promises */
+
+import fastify, { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from 'fastify'
 import { hostname } from 'os'
-// @ts-ignore
 import t from 'tap'
 import fastifyDebugHeaders from '../src'
+
+type Test = typeof t
 
 let server: FastifyInstance | null
 const servedBy = hostname()
 
-async function buildServer(
-  options?: RegisterOptions<Server, IncomingMessage, ServerResponse>
-): Promise<FastifyInstance> {
+async function buildServer(options?: FastifyPluginOptions): Promise<FastifyInstance> {
   if (server) {
     await server.close()
     server = null
@@ -21,8 +21,8 @@ async function buildServer(
   server.register(fastifyDebugHeaders, options)
 
   server.get('/main', {
-    async handler(): Promise<string> {
-      return 'OK'
+    handler(_: FastifyRequest, reply: FastifyReply): void {
+      reply.send('OK')
     }
   })
 
@@ -31,10 +31,12 @@ async function buildServer(
   return server
 }
 
-t.test('Plugin', (t: any) => {
-  t.afterEach(() => server!.close())
+t.test('Plugin', (t: Test) => {
+  t.afterEach(async () => {
+    await server!.close()
+  })
 
-  t.test('should correctly return all headers by default', async (t: any) => {
+  t.test('should correctly return all headers by default', async (t: Test) => {
     await buildServer()
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -48,7 +50,7 @@ t.test('Plugin', (t: any) => {
     t.match(response.headers['x-fastify-response-time'], /^\d+\.\d{6} ms$/)
   })
 
-  t.test('should correctly use the custom prefix', async (t: any) => {
+  t.test('should correctly use the custom prefix', async (t: Test) => {
     await buildServer({ prefix: 'prefix' })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -62,7 +64,7 @@ t.test('Plugin', (t: any) => {
     t.match(response.headers['x-prefix-response-time'], /^\d+\.\d{6} ms$/)
   })
 
-  t.test('should not include the servedBy if requested to', async (t: any) => {
+  t.test('should not include the servedBy if requested to', async (t: Test) => {
     await buildServer({ servedBy: false })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -74,7 +76,7 @@ t.test('Plugin', (t: any) => {
     t.doesNotHave(response.headers, 'x-fastify-served-by')
   })
 
-  t.test('should not include the requestId if requested to', async (t: any) => {
+  t.test('should not include the requestId if requested to', async (t: Test) => {
     await buildServer({ requestId: false })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -86,7 +88,7 @@ t.test('Plugin', (t: any) => {
     t.doesNotHave(response.headers, 'x-fastify-request-id')
   })
 
-  t.test('should not include the responseTime if requested to', async (t: any) => {
+  t.test('should not include the responseTime if requested to', async (t: Test) => {
     await buildServer({ responseTime: false })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -98,7 +100,7 @@ t.test('Plugin', (t: any) => {
     t.doesNotHave(response.headers, 'x-fastify-response-time')
   })
 
-  t.test('should be able to exclude all headers', async (t: any) => {
+  t.test('should be able to exclude all headers', async (t: Test) => {
     await buildServer({ servedBy: false, requestId: false, responseTime: false })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
