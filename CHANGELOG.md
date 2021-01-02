@@ -1,3 +1,8 @@
+### 2021-01-02 / 1.1.0
+
+- chore: Updated dependencies, code and tools.
+- chore: Update to ESLint 7.
+
 ### 2020-09-28 / 1.0.0
 
 - feat: Update to fastify 3.x.x.
