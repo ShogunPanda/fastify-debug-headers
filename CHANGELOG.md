@@ -1,3 +1,8 @@
+### 2021-01-03 / 1.1.1
+
+- chore: Updated linter config.
+- chore: Updated config.
+
 ### 2021-01-02 / 1.1.0
 
 - chore: Updated dependencies, code and tools.
