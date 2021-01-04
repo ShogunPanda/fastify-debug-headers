@@ -1,3 +1,7 @@
+### 2021-01-04 / 1.3.0
+
+- fix: Fixed package.json.
+
 ### 2021-01-04 / 1.2.0
 
 - feat: Export as ESM.
