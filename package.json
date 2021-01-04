@@ -15,7 +15,7 @@
   "author": "Shogun <shogun@cowtech.it>",
   "license": "ISC",
   "files": [
-    "lib",
+    "dist",
     "types",
     "CHANGELOG.md",
     "LICENSE.md",
