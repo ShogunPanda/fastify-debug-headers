@@ -46,7 +46,7 @@ t.test('Plugin', (t: Test) => {
     t.equal(response.payload, 'OK')
 
     t.equal(response.headers['x-fastify-served-by'], servedBy)
-    t.match(response.headers['x-fastify-request-id'], /^\d+$/)
+    t.match(response.headers['x-fastify-request-id'], /\d+$/)
     t.match(response.headers['x-fastify-response-time'], /^\d+\.\d{6} ms$/)
   })
 
@@ -60,7 +60,7 @@ t.test('Plugin', (t: Test) => {
     t.equal(response.payload, 'OK')
 
     t.equal(response.headers['x-prefix-served-by'], servedBy)
-    t.match(response.headers['x-prefix-request-id'], /^\d+$/)
+    t.match(response.headers['x-prefix-request-id'], /\d+$/)
     t.match(response.headers['x-prefix-response-time'], /^\d+\.\d{6} ms$/)
   })
 
@@ -73,7 +73,7 @@ t.test('Plugin', (t: Test) => {
     t.match(response.headers['content-type'], /^text\/plain/)
     t.equal(response.payload, 'OK')
 
-    t.doesNotHave(response.headers, 'x-fastify-served-by')
+    t.notMatch(response.headers, 'x-fastify-served-by')
   })
 
   t.test('should not include the requestId if requested to', async (t: Test) => {
@@ -85,7 +85,7 @@ t.test('Plugin', (t: Test) => {
     t.match(response.headers['content-type'], /^text\/plain/)
     t.equal(response.payload, 'OK')
 
-    t.doesNotHave(response.headers, 'x-fastify-request-id')
+    t.notMatch(response.headers, 'x-fastify-request-id')
   })
 
   t.test('should not include the responseTime if requested to', async (t: Test) => {
@@ -97,7 +97,7 @@ t.test('Plugin', (t: Test) => {
     t.match(response.headers['content-type'], /^text\/plain/)
     t.equal(response.payload, 'OK')
 
-    t.doesNotHave(response.headers, 'x-fastify-response-time')
+    t.notMatch(response.headers, 'x-fastify-response-time')
   })
 
   t.test('should be able to exclude all headers', async (t: Test) => {
@@ -109,9 +109,9 @@ t.test('Plugin', (t: Test) => {
     t.match(response.headers['content-type'], /^text\/plain/)
     t.equal(response.payload, 'OK')
 
-    t.doesNotHave(response.headers, 'x-fastify-served-by')
-    t.doesNotHave(response.headers, 'x-fastify-request-id')
-    t.doesNotHave(response.headers, 'x-fastify-response-time')
+    t.notMatch(response.headers, 'x-fastify-served-by')
+    t.notMatch(response.headers, 'x-fastify-request-id')
+    t.notMatch(response.headers, 'x-fastify-response-time')
   })
 
   t.end()

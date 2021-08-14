@@ -10,7 +10,7 @@ declare module 'fastify' {
   }
 }
 
-const plugin = fastifyPlugin(
+export const plugin = fastifyPlugin(
   function (instance: FastifyInstance, options: FastifyPluginOptions, done: (error?: FastifyError) => void): void {
     const servedBy = options.servedBy ?? true
     const responseTime = options.responseTime ?? true
@@ -54,10 +54,3 @@ const plugin = fastifyPlugin(
 )
 
 export default plugin
-
-// Fix CommonJS exporting
-/* istanbul ignore else */
-if (typeof module !== 'undefined') {
-  module.exports = plugin
-  Object.assign(module.exports, exports)
-}
