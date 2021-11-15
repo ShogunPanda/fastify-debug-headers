@@ -1,9 +1,9 @@
 # fastify-debug-headers
 
-[![Package Version](https://img.shields.io/npm/v/fastify-debug-headers.svg)](https://npm.im/fastify-debug-headers)
-[![Dependency Status](https://img.shields.io/david/ShogunPanda/fastify-debug-headers)](https://david-dm.org/ShogunPanda/fastify-debug-headers)
+[![Package](https://img.shields.io/npm/v/fastify-debug-headers.svg)](https://npm.im/fastify-debug-headers)
+[![Dependencies](https://img.shields.io/librariesio/release/npm/fastify-debug-headers)](https://libraries.io/npm/fastify-debug-headers)
 [![Build](https://github.com/ShogunPanda/fastify-debug-headers/workflows/CI/badge.svg)](https://github.com/ShogunPanda/fastify-debug-headers/actions?query=workflow%3ACI)
-[![Code Coverage](https://img.shields.io/codecov/c/gh/ShogunPanda/fastify-debug-headers?token=sIpECHM8Wb)](https://codecov.io/gh/ShogunPanda/fastify-debug-headers)
+[![Coverage](https://img.shields.io/codecov/c/gh/ShogunPanda/fastify-debug-headers?token=sIpECHM8Wb)](https://codecov.io/gh/ShogunPanda/fastify-debug-headers)
 
 Fastify plugin to add response debug headers.
 
