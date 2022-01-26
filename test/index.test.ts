@@ -5,8 +5,6 @@ import { hostname } from 'os'
 import t from 'tap'
 import fastifyDebugHeaders from '../src'
 
-type Test = typeof t
-
 let server: FastifyInstance | null
 const servedBy = hostname()
 
@@ -31,12 +29,12 @@ async function buildServer(options?: FastifyPluginOptions): Promise<FastifyInsta
   return server
 }
 
-t.test('Plugin', (t: Test) => {
+t.test('Plugin', t => {
   t.afterEach(async () => {
     await server!.close()
   })
 
-  t.test('should correctly return all headers by default', async (t: Test) => {
+  t.test('should correctly return all headers by default', async t => {
     await buildServer()
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -50,7 +48,7 @@ t.test('Plugin', (t: Test) => {
     t.match(response.headers['x-fastify-response-time'], /^\d+\.\d{6} ms$/)
   })
 
-  t.test('should correctly use the custom prefix', async (t: Test) => {
+  t.test('should correctly use the custom prefix', async t => {
     await buildServer({ prefix: 'prefix' })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -64,7 +62,7 @@ t.test('Plugin', (t: Test) => {
     t.match(response.headers['x-prefix-response-time'], /^\d+\.\d{6} ms$/)
   })
 
-  t.test('should not include the servedBy if requested to', async (t: Test) => {
+  t.test('should not include the servedBy if requested to', async t => {
     await buildServer({ servedBy: false })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -76,7 +74,7 @@ t.test('Plugin', (t: Test) => {
     t.notMatch(response.headers, 'x-fastify-served-by')
   })
 
-  t.test('should not include the requestId if requested to', async (t: Test) => {
+  t.test('should not include the requestId if requested to', async t => {
     await buildServer({ requestId: false })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -88,7 +86,7 @@ t.test('Plugin', (t: Test) => {
     t.notMatch(response.headers, 'x-fastify-request-id')
   })
 
-  t.test('should not include the responseTime if requested to', async (t: Test) => {
+  t.test('should not include the responseTime if requested to', async t => {
     await buildServer({ responseTime: false })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })
@@ -100,7 +98,7 @@ t.test('Plugin', (t: Test) => {
     t.notMatch(response.headers, 'x-fastify-response-time')
   })
 
-  t.test('should be able to exclude all headers', async (t: Test) => {
+  t.test('should be able to exclude all headers', async t => {
     await buildServer({ servedBy: false, requestId: false, responseTime: false })
 
     const response = await server!.inject({ method: 'GET', url: '/main' })

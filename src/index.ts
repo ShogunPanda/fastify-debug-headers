@@ -1,4 +1,4 @@
-import { FastifyError, FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from 'fastify'
+import { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
 import { hostname } from 'os'
 
@@ -22,13 +22,15 @@ export const plugin = fastifyPlugin(
     if (responseTime) {
       instance.decorateRequest(kStartTime, 0)
 
-      instance.addHook('onRequest', async function (request: FastifyRequest): Promise<void> {
+      instance.addHook('onRequest', (request, _, done) => {
         request[kStartTime] = process.hrtime.bigint()
+
+        done()
       })
     }
 
     if (servedBy || requestId || responseTime) {
-      instance.addHook('onSend', async (request: FastifyRequest, reply: FastifyReply) => {
+      instance.addHook('onSend', (request, reply, _, done) => {
         if (requestId) {
           // eslint-disable-next-line @typescript-eslint/no-floating-promises
           reply.header(`X-${prefix}-Request-Id`, request.id.toString())
@@ -45,6 +47,8 @@ export const plugin = fastifyPlugin(
           // eslint-disable-next-line @typescript-eslint/no-floating-promises
           reply.header(`X-${prefix}-Response-Time`, `${(Number(duration) / 1e6).toFixed(6)} ms`)
         }
+
+        done()
       })
     }
 
