@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import fastify, { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from 'fastify'
-import { hostname } from 'os'
+import { hostname } from 'node:os'
 import t from 'tap'
-import fastifyDebugHeaders from '../src'
+import fastifyDebugHeaders from '../src/index.js'
 
 let server: FastifyInstance | null
 const servedBy = hostname()

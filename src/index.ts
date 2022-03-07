@@ -1,6 +1,6 @@
 import { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
-import { hostname } from 'os'
+import { hostname } from 'node:os'
 
 const kStartTime = Symbol('fastify-debug-headers.start-time')
 
