@@ -24,7 +24,7 @@ async function buildServer(options?: FastifyPluginOptions): Promise<FastifyInsta
     }
   })
 
-  await server.listen(0)
+  await server.listen({ port: 0 })
 
   return server
 }
