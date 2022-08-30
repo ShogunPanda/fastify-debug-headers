@@ -54,7 +54,7 @@ export const plugin = fastifyPlugin(
 
     done()
   },
-  { name: 'fastify-debug-headers', fastify: '3.x' }
+  { name: 'fastify-debug-headers', fastify: '4.x' }
 )
 
 export default plugin
