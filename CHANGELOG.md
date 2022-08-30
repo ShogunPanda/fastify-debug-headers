@@ -1,3 +1,8 @@
+### 2022-08-30 / 3.0.0
+
+- feat: Updated to fastify 4.
+- chore: Use sourcemaps with swc
+
 ### 2022-03-07 / 2.0.5
 
 - chore: Updated dependencies.
