@@ -1,3 +1,8 @@
+### 2022-08-30 / 3.0.1
+
+- chore: Updated dependencies.
+- chore: Remove variadic method.
+
 ### 2022-08-30 / 3.0.0
 
 - feat: Updated to fastify 4.
