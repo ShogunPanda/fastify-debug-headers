@@ -16,7 +16,6 @@
   "license": "ISC",
   "files": [
     "dist",
-    "types",
     "CHANGELOG.md",
     "LICENSE.md",
     "README.md"
