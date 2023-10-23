@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import fastify, { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from 'fastify'
+import fastify, {
+  type FastifyInstance,
+  type FastifyPluginOptions,
+  type FastifyReply,
+  type FastifyRequest
+} from 'fastify'
 import { hostname } from 'node:os'
 import t from 'tap'
 import fastifyDebugHeaders from '../src/index.js'

@@ -1,4 +1,4 @@
-import { FastifyError, FastifyInstance, FastifyPluginOptions } from 'fastify'
+import { type FastifyError, type FastifyInstance, type FastifyPluginOptions } from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
 import { hostname } from 'node:os'
 
@@ -20,7 +20,7 @@ export const plugin = fastifyPlugin(
     const servedByName = hostname()
 
     if (responseTime) {
-      instance.decorateRequest(kStartTime, 0)
+      instance.decorateRequest<number>(kStartTime, 0)
 
       instance.addHook('onRequest', (request, _, done) => {
         request[kStartTime] = process.hrtime.bigint()
