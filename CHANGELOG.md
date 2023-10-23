@@ -1,3 +1,9 @@
+### 2023-10-23 / 3.1.0
+
+- chore: Updated dependencies and toolchain.
+- chore: Fixed compilation.
+- chore: CI improvement
+
 ### 2022-11-23 / 3.0.3
 
 - chore: Updated dependencies.
