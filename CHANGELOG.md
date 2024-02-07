@@ -1,3 +1,8 @@
+### 2024-02-07 / 4.0.4
+
+- chore: Updated dependencies.
+- chore: Replaced tap with Node test runner.
+
 ### 2024-01-27 / 4.0.3
 
 - chore: Fixed build.
