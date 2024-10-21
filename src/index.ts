@@ -32,19 +32,16 @@ export const plugin = fastifyPlugin(
     if (servedBy || requestId || responseTime) {
       instance.addHook('onSend', (request, reply, _, done) => {
         if (requestId) {
-          // eslint-disable-next-line @typescript-eslint/no-floating-promises
           reply.header(`X-${prefix}-Request-Id`, request.id.toString())
         }
 
         if (servedBy) {
-          // eslint-disable-next-line @typescript-eslint/no-floating-promises
           reply.header(`X-${prefix}-Served-By`, servedByName)
         }
 
         if (responseTime) {
           const duration = process.hrtime.bigint() - request[kStartTime]
 
-          // eslint-disable-next-line @typescript-eslint/no-floating-promises
           reply.header(`X-${prefix}-Response-Time`, `${(Number(duration) / 1e6).toFixed(6)} ms`)
         }
 
@@ -54,7 +51,7 @@ export const plugin = fastifyPlugin(
 
     done()
   },
-  { name: 'fastify-debug-headers', fastify: '4.x' }
+  { name: 'fastify-debug-headers', fastify: '5.x' }
 )
 
 export default plugin
