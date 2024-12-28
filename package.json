@@ -1,6 +1,6 @@
 {
   "name": "fastify-debug-headers",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Fastify plugin to add response debug headers.",
   "homepage": "https://sw.cowtech.it/fastify-debug-headers",
   "repository": {
