@@ -7,7 +7,7 @@ import fastify, {
 import { deepStrictEqual, match } from 'node:assert'
 import { hostname } from 'node:os'
 import { afterEach, test } from 'node:test'
-import fastifyDebugHeaders from '../src/index.js'
+import fastifyDebugHeaders from '../src/index.ts'
 
 let server: FastifyInstance | null
 const servedBy = hostname()
