@@ -1,12 +1,8 @@
-import fastify, {
-  type FastifyInstance,
-  type FastifyPluginOptions,
-  type FastifyReply,
-  type FastifyRequest
-} from 'fastify'
+import type { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from 'fastify'
 import { deepStrictEqual, match } from 'node:assert'
 import { hostname } from 'node:os'
 import { afterEach, test } from 'node:test'
+import fastify from 'fastify'
 import fastifyDebugHeaders from '../src/index.ts'
 
 let server: FastifyInstance | null
